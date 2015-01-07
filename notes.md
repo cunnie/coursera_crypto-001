@@ -1,4 +1,4 @@
-# Introduction to Cryptography
+# Week1: Introduction
 
 ## Course Overview
 
@@ -44,7 +44,7 @@ to the same person but at a later time.
 * E: encryption algorithm: E(k,m) == c
 * D: decryption algorithm: D(k,c) == m
 
-Encryption algorith is publicly known; don't use proprietary
+Encryption algorithm is publicly known; don't use proprietary
 algorithms because they haven't been peer-reviewed and may have
 serious flaws.
 
@@ -53,7 +53,6 @@ serious flaws.
 * Single use key (one time key)
   - encrypts only one message, e.g. email (new key generated for
       each email)
-
 * Multi use key (many time key)
   - encrypts multiple message, e.g. filesystem encryption, same key
   for multiple files.
@@ -63,8 +62,7 @@ serious flaws.
 
 * Cryptography
   - good tool
-  - basis for many security mechanismes
-
+  - basis for many security mechanisms
 * Cryptography is not
   - a panacea for all security problems (software bugs, social
       engineering)
@@ -73,3 +71,13 @@ serious flaws.
   - something you should invent yourself (it's easy to get wrong)
   (graveyard of bad crypto designs)
 
+
+
+## What is Cryptography?
+
+### Crytpo Core
+
+Secure Communication:
+
+1. Establish secret key
+2. communicate securely
