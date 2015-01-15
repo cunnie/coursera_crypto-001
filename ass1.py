@@ -14,9 +14,8 @@ CIPHERS=(
   "466d06ece998b7a2fb1d464fed2ced7641ddaa3cc31c9941cf110abbf409ed39598005b3399ccfafb61d0315fca0a314be138a9f32503bedac8067f03adbf3575c3b8edc9ba7f537530541ab0f9f3cd04ff50d66f1d559ba520e89a2cb2a83"
 )
 
-cipher_target=0x32510ba9babebbbefd001547a810e67149caee11d945cd7fc81a05e9f85aac650e9052ba6a8cd8257bf14d13e6f0a803b54fde9e77472dbff89d71b57bddef121336cb85ccb8f3315f4b52e301d16e9f52f904
+cipher_target="32510ba9babebbbefd001547a810e67149caee11d945cd7fc81a05e9f85aac650e9052ba6a8cd8257bf14d13e6f0a803b54fde9e77472dbff89d71b57bddef121336cb85ccb8f3315f4b52e301d16e9f52f904"
 
-print CIPHERS[0]
 KEY_SIZE=16
 
 def strxor(a, b):     # xor two strings of different lengths
@@ -35,5 +34,16 @@ def encrypt(key, msg):
     return c
 
 def main():
-    key = random(1024)
-    ciphertexts = [encrypt(key, msg) for msg in MSGS]
+    get_key()
+#    for cipher in CIPHERS:
+#      print ''.join(x.encode('hex') for x in strxor(cipher_target, cipher))
+
+def get_key():
+  for k in xrange(KEY_SIZE):
+    for cipher in CIPHERS:
+      if  cipher[0:2],
+    break
+
+main()
+#    key = random(1024)
+#    ciphertexts = [encrypt(key, msg) for msg in MSGS]
