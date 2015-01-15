@@ -1,5 +1,20 @@
 #!/usr/bin/python
 import sys
+import unittest
+
+class TestCipherFunctions(unittest.TestCase):
+
+    def setUp(self):
+        x = 0
+
+    def test_isprintable(self):
+        self.assertFalse(isprintable(31))
+        self.assertTrue(isprintable(32))
+        self.assertTrue(isprintable(127))
+        self.assertFalse(isprintable(128))
+
+    def test_decrypt(self):
+        True #self.assert(decrypt('\0',"asdf"))
 
 CIPHERS=(
   "315c4eeaa8b5f8aaf9174145bf43e1784b8fa00dc71d885a804e5ee9fa40b16349c146fb778cdf2d3aff021dfff5b403b510d0d0455468aeb98622b137dae857553ccd8883a7bc37520e06e515d22c954eba5025b8cc57ee59418ce7dc6bc41556bdb36bbca3e8774301fbcaa3b83b220809560987815f65286764703de0f3d524400a19b159610b11ef3e",
@@ -33,17 +48,42 @@ def encrypt(key, msg):
     print c.encode('hex')
     return c
 
+def decrypt(key, cipher_hex):
+    c = strxor(key, cipher_hex.decode('hex'))
+    print
+    print c
+    return c
+
 def main():
     get_key()
-#    for cipher in CIPHERS:
-#      print ''.join(x.encode('hex') for x in strxor(cipher_target, cipher))
+
+def isprintable(a):
+    if (a > 31) and (a < 128):
+        return True
+    return False
 
 def get_key():
-  for k in xrange(KEY_SIZE):
-    for cipher in CIPHERS:
-      if  cipher[0:2],
-    break
+    # cycle through all 16 bytes of the key
+    for key in xrange(KEY_SIZE):
+        # for this byte of the key, cycle through 0..255
+            for key_byte in xrange(255):
+                # go through each cipher
+                for cipher in CIPHERS:
+                    print "",
+            # start your
+            #for k_sub_n
+            #if  cipher[0:2],
+        #break
 
+def decrypt(key,ciphertext):
+    plaintext = ("0x" + strxor(a,b)).decode("hex")
+    print plaintext.printable
+    return plaintext
+
+#unittest.main()
 main()
 #    key = random(1024)
 #    ciphertexts = [encrypt(key, msg) for msg in MSGS]
+
+print "asdf"
+print encrypt('aaaaa',"Brian")
