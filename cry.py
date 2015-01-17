@@ -1,7 +1,19 @@
-#!/usr/bin/python
 import sys
 import unittest
-import cry
+
+class TestCipherFunctions(unittest.TestCase):
+
+    def setUp(self):
+        x = 0
+
+    def test_isprintable(self):
+        self.assertFalse(isprintable(31))
+        self.assertTrue(isprintable(32))
+        self.assertTrue(isprintable(127))
+        self.assertFalse(isprintable(128))
+
+    def test_decrypt(self):
+        True #self.assert(decrypt('\0',"asdf"))
 
 CIPHERS=(
   "315c4eeaa8b5f8aaf9174145bf43e1784b8fa00dc71d885a804e5ee9fa40b16349c146fb778cdf2d3aff021dfff5b403b510d0d0455468aeb98622b137dae857553ccd8883a7bc37520e06e515d22c954eba5025b8cc57ee59418ce7dc6bc41556bdb36bbca3e8774301fbcaa3b83b220809560987815f65286764703de0f3d524400a19b159610b11ef3e",
@@ -20,8 +32,31 @@ cipher_target="32510ba9babebbbefd001547a810e67149caee11d945cd7fc81a05e9f85aac650
 
 KEY_SIZE=16
 
+def strxor(a, b):     # xor two strings of different lengths
+    if len(a) > len(b):
+        return "".join([chr(ord(x) ^ ord(y)) for (x, y) in zip(a[:len(b)], b)])
+    else:
+        return "".join([chr(ord(x) ^ ord(y)) for (x, y) in zip(a, b[:len(a)])])
+
+def random(size=16):
+    return open("/dev/urandom").read(size)
+
+def encrypt(key, msg):
+    c = strxor(key, msg)
+    print
+    print c.encode('hex')
+    return c
+
+def decrypt(key, cipher_hex):
+    c = strxor(key, cipher_hex.decode('hex'))
+    print
+    print c
+    return c
+
 def main():
     get_key()
+
+
 
 def isprintable(a):
     if (a > 31) and (a < 128):
@@ -41,10 +76,17 @@ def get_key():
             #if  cipher[0:2],
         #break
 
-cry.test()
-#main()
+def decrypt(key,ciphertext):
+    plaintext = ("0x" + strxor(a,b)).decode("hex")
+    print plaintext.printable
+    return plaintext
+
+def test():
+  unittest.main()
+
+main()
 #    key = random(1024)
 #    ciphertexts = [encrypt(key, msg) for msg in MSGS]
 
-print "asdf"
-print cry.encrypt('aaaaa',"Brian")
+#print "asdf"
+#print encrypt('aaaaa',"Brian")
