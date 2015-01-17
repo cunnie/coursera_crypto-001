@@ -42,6 +42,7 @@ def get_key():
         #break
 
 cry.test()
+#cry.decrypt()
 #main()
 #    key = random(1024)
 #    ciphertexts = [encrypt(key, msg) for msg in MSGS]
